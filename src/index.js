@@ -2,20 +2,16 @@ import "./style.css";
 
 console.log("Hello custom.js file");
 
-define(["jquery", "base/js/namespace", "base/js/events"], function(
-  $,
-  Jupyter,
-  events
-) {
+define(["jquery", "notebook/js/cell"], function($, cell) {
   ("use strict");
-  console.log(Jupyter.notebook);
-  console.log(Jupyter.notebook.get_cells());
 
-  events.on("create.Cell", function() {
-    console.log("Created a cell");
-  });
-
-  events.on("delete.Cell", function() {
-    console.log("Deleted a cell");
-  });
+  /* Hack through Cell init_classes prototype to add custom CSS classes on cell creation*/
+  var Cell = cell.Cell;
+  var old_init_classes = Cell.prototype.init_classes;
+  Cell.prototype.init_classes = function() {
+    var response = old_init_classes.apply(this, arguments);
+    console.log("created Cell");
+    this.element.addClass("hello");
+    return response;
+  };
 });
