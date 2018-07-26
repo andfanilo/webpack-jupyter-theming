@@ -1,6 +1,6 @@
 # Theming Jupyter notebook with Webpack
 
-This is a small experiment of using webpack to bundle external CSS and JS files and libraries into a unique `custom.js` to customize a Jupyter notebook frontend.
+This is a small experiment of using webpack to bundle external CSS and JS files and libraries into a unique `custom.js` to customize a Jupyter notebook frontend. For now it bundles [animate.css](https://daneden.github.io/animate.css/) and some custom js on the Jupyter JS API to add bounceIn animation to cell creation.
 
 ## Prerequisites :
 
